@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:paddingLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_dni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N Doc: 12454797"/>
+
+        <TextView
+            android:id="@+id/tv_contacto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N Doc: 12454797"/>
+
+        <TextView
+            android:id="@+id/tv_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Av Cayma 245"/>
+
+        <TextView
+            android:id="@+id/tv_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 Tonelada de ladrillos"/>
+
+        <TextView
+            android:id="@+id/tv_facture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Av Cayma 245"/>
+
+        <TextView
+            android:id="@+id/tv_entreprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Av Cayma 245"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/tb_checkPick"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textOn=""
+            android:textOff=""
+            android:background="@drawable/toggleok_style"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tb_uncheckPick"
+            android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textOn=""
+            android:textOff=""
+            android:background="@drawable/togglecancel_style"
+            android:text="" />
+    </LinearLayout>
+    
+</LinearLayout>

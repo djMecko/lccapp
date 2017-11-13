@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:paddingLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_delivered_dni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N Doc: 12454797"/>
+
+        <TextView
+            android:id="@+id/tv_delivered_contacto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N Doc: 12454797"/>
+
+        <TextView
+            android:id="@+id/tv_delivered_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Av Cayma 245"/>
+
+        <TextView
+            android:id="@+id/tv_delivered_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 Tonelada de ladrillos"/>
+
+        <TextView
+            android:id="@+id/tv_delivered_facture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Av Cayma 245"/>
+
+        <TextView
+            android:id="@+id/tv_delivered_entreprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Av Cayma 245"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_update"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/update" />
+
+            <ToggleButton
+                android:id="@+id/tb_delivered_checkPick"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:textOn=""
+                android:textOff=""
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/toggleok_style"
+                android:text="" />
+
+            <ToggleButton
+                android:id="@+id/tb_delivered_uncheckPick"
+                android:layout_marginLeft="10dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:textOn=""
+                android:textOff=""
+                android:background="@drawable/togglecancel_style"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_delivered_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="Navegacion" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>
