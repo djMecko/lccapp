@@ -81,6 +81,9 @@ public class PickItemsActivity extends ActionBarActivity implements View.OnClick
                     JSONArray jsonArray = new JSONArray(response);
                     packages = new ArrayList<>();
                     for(int i=0; i< jsonArray.length();i++){
+                        Log.v("DATA", "String for replace" );
+                        Log.v("DATA", jsonArray.getJSONObject(i).getString("latitude").replaceAll("\"","") );
+
                         packages.add(new Package(
                                 jsonArray.getJSONObject(i).getString("address"),
                                 jsonArray.getJSONObject(i).getString("reference"),
@@ -89,8 +92,8 @@ public class PickItemsActivity extends ActionBarActivity implements View.OnClick
                                 jsonArray.getJSONObject(i).getString("nombre_de_contacto"),
                                 jsonArray.getJSONObject(i).getString("numero_de_contacto"),
                                 jsonArray.getJSONObject(i).getString("nombre_de_cliente"),
-                                Double.valueOf(jsonArray.getJSONObject(i).getString("latitude")),
-                                Double.valueOf(jsonArray.getJSONObject(i).getString("longitude")),
+                                Double.valueOf(jsonArray.getJSONObject(i).getString("latitude").replaceAll("\"","")),
+                                Double.valueOf(jsonArray.getJSONObject(i).getString("longitude").replaceAll("\"","")),
                                 jsonArray.getJSONObject(i).getInt("delivery_order"),
                                 jsonArray.getJSONObject(i).getString("document_type"),
                                 jsonArray.getJSONObject(i).getString("document_number"),
@@ -230,12 +233,62 @@ public class PickItemsActivity extends ActionBarActivity implements View.OnClick
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.getUpdatePackagesStates(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 packageDao.createPackages(packages);
-                Log.v("DATA",response);
-                progressDialog.dismiss();
-                Intent intent = new Intent(PickItemsActivity.this,DeliverItemsActivity.class);
-                startActivity(intent);
-                finish();
+
+
+                /* */
+                RequestQueue queue = Volley.newRequestQueue(PickItemsActivity.this);
+                String url = urls.getPackages() + "?gtdid=" + String.valueOf(gtdId);
+                Log.v("DATA",url);
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String newresponse) {
+                        Log.v("DATA", newresponse);
+                        try {
+
+                            JSONArray jsonArray = new JSONArray(newresponse);
+                            ArrayList<Package> newpackages = new ArrayList<>();
+                            for(int i=0; i< jsonArray.length();i++){
+
+                                //Log.v("DATA", String.valueOf(jsonArray.getJSONObject(i).getInt("id")));
+                                //Log.v("DATA", jsonArray.getJSONObject(i).getString("estimated_date") );
+
+                                packageDao.updatePackageStimatedDate(jsonArray.getJSONObject(i).getInt("id"),
+                                        jsonArray.getJSONObject(i).getString("estimated_date")
+                                );
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(PickItemsActivity.this, "Error de conexion",Toast.LENGTH_LONG).show();
+                        }
+
+                        /* */
+
+                        Log.v("DATA",newresponse);
+                        progressDialog.dismiss();
+                        Intent intent = new Intent(PickItemsActivity.this,DeliverItemsActivity.class);
+                        startActivity(intent);
+                        finish();
+
+                        /* */
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(PickItemsActivity.this, "Error de conexion",Toast.LENGTH_LONG).show();
+                        progressDialog.hide();
+                    }
+                });
+                stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        5000,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                queue.add(stringRequest);
+
+                /* */
             }
         }, new Response.ErrorListener() {
             @Override

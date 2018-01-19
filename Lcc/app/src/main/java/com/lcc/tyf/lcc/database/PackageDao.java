@@ -2,6 +2,7 @@ package com.lcc.tyf.lcc.database;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
@@ -105,6 +106,36 @@ public class PackageDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void updatePackageStimatedDate(int id, String estimated_date){
+        Package packages = new Package();
+        UpdateBuilder<Package,Intent> updateBuilder = dao.updateBuilder();
+
+        Log.v("DATA", "value");
+        Log.v("DATA", String.valueOf(id));
+        Log.v("DATA", estimated_date);
+
+        try {
+            updateBuilder.where().eq("id",id);
+            updateBuilder.updateColumnValue("estimated_date", estimated_date);
+            updateBuilder.update();
+            Log.v("DATA", "exitoso el update");
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            Log.v("DATA", "fallo el update");
+        }
+
+        List<Package> packagesitos = getPackages();
+        Log.v("DATA", "total packges" + String.valueOf( packagesitos.size() ));
+        for(int i = 0;i < packagesitos.size(); i++ ){
+            Log.v("DATA", String.valueOf( packagesitos.get(i).getId()));
+            if(packagesitos.get(i).getId() == id){
+                Log.v("DATA", String.valueOf(id) + " " +packagesitos.get(i).getEstimated_date()  );
+            }
+        }
+
     }
 
     public void updatePackagePath(int id, String imgPath){

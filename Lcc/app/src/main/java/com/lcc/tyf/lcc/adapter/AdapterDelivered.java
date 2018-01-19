@@ -92,7 +92,7 @@ public class AdapterDelivered extends ArrayAdapter<Package> {
         TextView tv_delivered_contacto = (TextView) rowView.findViewById(R.id.tv_delivered_contacto);
         TextView tv_delivered_facture = (TextView) rowView.findViewById(R.id.tv_delivered_facture);
         TextView tv_delivered_entreprice = (TextView) rowView.findViewById(R.id.tv_delivered_entreprice);
-
+        TextView tv_delivered_estimated = (TextView) rowView.findViewById(R.id.tv_delivered_estimated);
         Button btn_delivered_navigation = (Button) rowView.findViewById(R.id.btn_delivered_navigation);
 
         ImageView iv_update = (ImageView) rowView.findViewById(R.id.iv_update);
@@ -107,6 +107,8 @@ public class AdapterDelivered extends ArrayAdapter<Package> {
         tv_delivered_address.setText("Direccion entrega: " + values.get(position).getAddress());
         tv_delivered_facture.setText(values.get(position).getDocument_type() + ": " + values.get(position).getDocument_number());
         tv_delivered_entreprice.setText("Empresa: " + values.get(position).getCompany());
+        String stimatedDate = values.get(position).getEstimated_date();
+        tv_delivered_estimated.setText("Tiempo estimado:" + stimatedDate.substring(0,stimatedDate.length() - 4) );
 
         if( values.get(position).getStateDeliver() != -1 ){
             tb_delivered_checkPick.setVisibility(View.INVISIBLE);

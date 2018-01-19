@@ -30,7 +30,7 @@ public class Package implements Comparable<Package> {
     public static final String DOCUMENT_TYPE = "DOCUMENT_TYPE";
     public static final String DOCUMENT_NUMBER = "DOCUMENT_NUMBER";
     public static final String COMPANY = "COMPANY";
-
+    public static final String ESTIMATED_DATE = "ESTIMATED_DATE";
     @DatabaseField(generatedId = true, columnName = IDDB)
     private int iddb;
     @DatabaseField(columnName = ADDRESS)
@@ -67,11 +67,18 @@ public class Package implements Comparable<Package> {
     private String document_number;
     @DatabaseField(columnName = COMPANY)
     private String company;
-
+    @DatabaseField(columnName = ESTIMATED_DATE)
+    private String estimated_date;
 
     public Package(){
 
     }
+
+    public Package(int id, String estimated_date){
+        this.id  = id;
+        this.estimated_date = estimated_date;
+    }
+
 
     public Package(String address, String reference, int id, String nombre, String nombre_de_contacto, String numero_de_contacto, String nombre_de_cliente, double latitude, double longitude, int delivery_order, String document_type, String document_number, String company){
         this.address = address;
@@ -231,6 +238,14 @@ public class Package implements Comparable<Package> {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public String getEstimated_date() {
+        return estimated_date;
+    }
+
+    public void setEstimated_date(String estimated_date) {
+        this.estimated_date = estimated_date;
     }
 
     public int compareTo(Package packag) {

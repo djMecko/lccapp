@@ -23,11 +23,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.lcc.tyf.lcc.adapter.AdapterGtd;
+import com.lcc.tyf.lcc.adapter.AdapterInfo;
+import com.lcc.tyf.lcc.models.Info;
 import com.lcc.tyf.lcc.utils.Urls;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 /**
  * Created by max on 6/8/17.
@@ -38,10 +43,7 @@ public class DeliverInfoActivity extends ActionBarActivity implements View.OnCli
     private Button btn_newclient;
     private Button btn_search;
     private EditText edt_package_dni;
-    private TextView tv_package_status;
-    private TextView tv_package_motive;
-    private TextView tv_package_date;
-    private TextView tv_package_client;
+    private ListView lv_documents;
 
     private ProgressDialog progressDialog;
     private Urls urls;
@@ -73,10 +75,7 @@ public class DeliverInfoActivity extends ActionBarActivity implements View.OnCli
         btn_newclient = (Button) findViewById(R.id.btn_newclient);
         btn_search = (Button) findViewById(R.id.btn_search);
         edt_package_dni = (EditText) findViewById(R.id.edt_package_dni);
-        tv_package_status = (TextView) findViewById(R.id.tv_package_status);
-        tv_package_motive = (TextView) findViewById(R.id.tv_package_motive);
-        tv_package_date = (TextView) findViewById(R.id.tv_package_date);
-        tv_package_client = (TextView) findViewById(R.id.tv_package_client);
+        lv_documents = (ListView) findViewById(R.id.lv_documents);
 
         btn_newclient.setOnClickListener(this);
         btn_search.setOnClickListener(this);
@@ -107,7 +106,22 @@ public class DeliverInfoActivity extends ActionBarActivity implements View.OnCli
 
                 try {
                     JSONObject jsonObj = new JSONObject(response);
+                    JSONArray jsonArray = jsonObj.getJSONArray("deliveries");
+                    ArrayList<Info> values = new ArrayList<>();
+                    for (int i=0;i < jsonArray.length(); i++){
+                        values.add(new Info(
+                                jsonArray.getJSONObject(i).getBoolean("success"),
+                                jsonArray.getJSONObject(i).getString("status"),
+                                jsonArray.getJSONObject(i).getString("motive"),
+                                jsonArray.getJSONObject(i).getString("client"),
+                                jsonArray.getJSONObject(i).getString("estimated_date")
+                        ));
+                    }
 
+                    AdapterInfo adapterInfo = new AdapterInfo(getApplicationContext(), values);
+                    lv_documents.setAdapter(adapterInfo);
+
+                    /*
                     if(jsonObj.get("success").toString().equals("true")){
                         tv_package_status.setVisibility(View.VISIBLE);
                         tv_package_motive.setVisibility(View.VISIBLE);
@@ -130,7 +144,7 @@ public class DeliverInfoActivity extends ActionBarActivity implements View.OnCli
 
                         Toast.makeText(DeliverInfoActivity.this, jsonObj.get("message").toString(),Toast.LENGTH_LONG).show();
                     }
-
+                    */
                 } catch (JSONException e) {
                     e.printStackTrace();
                     progressDialog.dismiss();

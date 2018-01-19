@@ -66,12 +66,12 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
         toolbar();
         widgets();
         // Driver
-        //edt_dni.setText("42569113");
-        //edt_password.setText("123");
+        //edt_dni.setText("19483641");
+        //edt_password.setText("1948");
 
         // Seller
-        //edt_dni.setText("01234567");
-        //edt_password.setText("secret");
+        edt_dni.setText("46762585");
+        edt_password.setText("4676");
 
 
         ArrayList<Package> packages = (ArrayList<Package>) packageDao.getPackagesDelivered(3);
