@@ -70,8 +70,8 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
         //edt_password.setText("1948");
 
         // Seller
-        edt_dni.setText("46762585");
-        edt_password.setText("4676");
+        //edt_dni.setText("46762585");
+        //edt_password.setText("4676");
 
 
         ArrayList<Package> packages = (ArrayList<Package>) packageDao.getPackagesDelivered(3);
