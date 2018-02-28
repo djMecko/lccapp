@@ -114,7 +114,11 @@ public class DeliverInfoActivity extends ActionBarActivity implements View.OnCli
                                 jsonArray.getJSONObject(i).getString("status"),
                                 jsonArray.getJSONObject(i).getString("motive"),
                                 jsonArray.getJSONObject(i).getString("client"),
-                                jsonArray.getJSONObject(i).getString("estimated_date")
+                                jsonArray.getJSONObject(i).getString("estimated_date"),
+                                jsonArray.getJSONObject(i).getString("company"),
+                                jsonArray.getJSONObject(i).getString("document_type"),
+                                jsonArray.getJSONObject(i).getString("serie"),
+                                jsonArray.getJSONObject(i).getString("document_number")
                         ));
                     }
 

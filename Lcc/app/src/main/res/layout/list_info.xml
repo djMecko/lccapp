@@ -41,4 +41,40 @@
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:text="Fecha:"/>
 
+    <TextView
+        android:id="@+id/tv_package_company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textSize="15sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="Empresa: "/>
+
+    <TextView
+        android:id="@+id/tv_package_document_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textSize="15sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="T. Documento:  "/>
+
+    <TextView
+        android:id="@+id/tv_package_serie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textSize="15sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="Serie:  "/>
+
+    <TextView
+        android:id="@+id/tv_package_document_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textSize="15sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="N. Documento:  "/>
+
 </LinearLayout>

@@ -38,6 +38,11 @@ public class AdapterInfo extends ArrayAdapter<Info> {
         TextView tv_package_motive = (TextView) rowView.findViewById(R.id.tv_package_motive);
         TextView tv_package_date = (TextView) rowView.findViewById(R.id.tv_package_date);
         TextView tv_package_client = (TextView) rowView.findViewById(R.id.tv_package_client);
+        TextView tv_package_company = (TextView) rowView.findViewById(R.id.tv_package_company);
+        TextView tv_package_document_type = (TextView) rowView.findViewById(R.id.tv_package_document_type);
+        TextView tv_package_serie = (TextView) rowView.findViewById(R.id.tv_package_serie);
+        TextView tv_package_document_number = (TextView) rowView.findViewById(R.id.tv_package_document_number);
+
 
         //if(values.get(position).getSuccess().toString().equals("true")){
 
@@ -54,6 +59,10 @@ public class AdapterInfo extends ArrayAdapter<Info> {
             }
             tv_package_date.setText("Fecha: " + values.get(position).getEstimated_date());
             tv_package_client.setText("Cliente: " + values.get(position).getClient());
+            tv_package_company.setText("Empresa: " + values.get(position).getCompany());
+            tv_package_document_type.setText("T. Documento: " + values.get(position).getDocument_type());
+            tv_package_serie.setText("Serie: "+ values.get(position).getSerie());
+            tv_package_document_number.setText("N. Documento: " + values.get(position).getDocument_number());
         /*
         }else{
 
