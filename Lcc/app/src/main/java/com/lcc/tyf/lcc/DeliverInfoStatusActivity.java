@@ -127,8 +127,8 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
             public void onResponse(String response) {
 
                 try {
-                    //JSONObject jsonObj = new JSONObject(response);
-                    JSONArray jsonArray = new JSONArray(response);
+                    JSONObject jsonObj = new JSONObject(response);
+                    JSONArray jsonArray = jsonObj.getJSONArray("deliveries");
                     ArrayList<Info> values = new ArrayList<>();
                     if(jsonArray.length() == 0){
                         Toast.makeText(getApplicationContext(), "No hay informacion para mostrar", Toast.LENGTH_LONG).show();
