@@ -32,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by max on 4/10/18.
@@ -51,6 +52,13 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
 
         toolbar();
         widgets();
+
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+        updateResult(year, month, day);
     }
 
     public void toolbar(){
@@ -110,8 +118,6 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
 
     @Override
     public void updateResult(int year, int month, int day) {
-        Toast.makeText(getApplicationContext(), String.valueOf(year), Toast.LENGTH_LONG).show();
-
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = urls.getDeliveriesbycodeseller() + "?id=" + hsp.getSellerId() + "&date_search=" + String.valueOf(year) + "-" + String.valueOf(month) + "-" +String.valueOf(day);
@@ -121,9 +127,12 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
             public void onResponse(String response) {
 
                 try {
-                    JSONObject jsonObj = new JSONObject(response);
-                    JSONArray jsonArray = jsonObj.getJSONArray("deliveries");
+                    //JSONObject jsonObj = new JSONObject(response);
+                    JSONArray jsonArray = new JSONArray(response);
                     ArrayList<Info> values = new ArrayList<>();
+                    if(jsonArray.length() == 0){
+                        Toast.makeText(getApplicationContext(), "No hay informacion para mostrar", Toast.LENGTH_LONG).show();
+                    }
                     for (int i=0;i < jsonArray.length(); i++){
                         values.add(new Info(
                                 jsonArray.getJSONObject(i).getBoolean("success"),
