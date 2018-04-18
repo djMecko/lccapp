@@ -33,5 +33,12 @@ public class HandlerSharedPreferences {
         return pref.getInt("gtd",0);
     }
 
+    public void putSellerId(int id){
+        editor.putInt("seller_id",id);
+        editor.commit();
+    }
+    public int getSellerId(){
+        return pref.getInt("seller_id",0);
+    }
 
 }

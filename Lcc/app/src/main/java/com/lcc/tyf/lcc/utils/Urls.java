@@ -47,6 +47,10 @@ public class Urls {
         return base_url + "statusdelivery";
     }
 
+    public String getDeliveriesbycodeseller(){
+        return base_url + "getdeliveriesbycodeseller";
+    }
+
     public String getUpdatePackagesStates(){
         return base_url + "packagesstate";
     }

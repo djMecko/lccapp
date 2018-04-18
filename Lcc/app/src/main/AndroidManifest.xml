@@ -94,6 +94,12 @@
         </activity>
 
         <activity
+            android:name=".DeliverInfoStatusActivity"
+            android:label="Ultimas entregas"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
             android:name=".FormActivity"
             android:label="Buscar entrega"
             android:screenOrientation="portrait">

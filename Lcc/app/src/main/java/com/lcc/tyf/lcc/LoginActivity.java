@@ -4,15 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,8 +67,8 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
         //edt_password.setText("1948");
 
         // Seller
-        //edt_dni.setText("46762585");
-        //edt_password.setText("4676");
+        edt_dni.setText("46762585");
+        edt_password.setText("4676");
 
 
         ArrayList<Package> packages = (ArrayList<Package>) packageDao.getPackagesDelivered(3);
@@ -227,13 +224,16 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
 
                     if(jsonObj.get("success").toString().equals("true")){
 
-                        if(type.equals("driver")){
+                        if(type.equals("driver")){ // Si es conductor
                             hsp.putDriverId(jsonObj.getInt("id"));
                             loadStates();
 
-                        }else{
+                        }else{  // Si es vendedor
+                            hsp.putSellerId(jsonObj.getInt("id"));
                             progressDialog.dismiss();
-                            Intent intent = new Intent(LoginActivity.this, DeliverInfoActivity.class);
+
+                            Intent intent = new Intent(LoginActivity.this, DeliverInfoStatusActivity.class);
+                            //Intent intent = new Intent(LoginActivity.this, DeliverInfoActivity.class);
                             startActivity(intent);
                             finish();
                         }
