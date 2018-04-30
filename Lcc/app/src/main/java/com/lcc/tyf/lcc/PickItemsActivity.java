@@ -70,11 +70,11 @@ public class PickItemsActivity extends ActionBarActivity implements View.OnClick
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = urls.getPackages() + "?gtdid=" + String.valueOf(gtdId);
-        Log.v("DATA",url);
+        Log.e("DATA",url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.v("DATA", response);
+                Log.e("DATA", response);
                 progressDialog.hide();
                 try {
 
@@ -86,6 +86,7 @@ public class PickItemsActivity extends ActionBarActivity implements View.OnClick
 
                         packages.add(new Package(
                                 jsonArray.getJSONObject(i).getString("address"),
+                                jsonArray.getJSONObject(i).getString("note"),
                                 jsonArray.getJSONObject(i).getString("reference"),
                                 jsonArray.getJSONObject(i).getInt("id"),
                                 jsonArray.getJSONObject(i).getString("nombre"),

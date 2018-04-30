@@ -89,6 +89,7 @@ public class AdapterDelivered extends ArrayAdapter<Package> {
         TextView tv_delivered_dni = (TextView) rowView.findViewById(R.id.tv_delivered_dni);
         TextView tv_delivered_product = (TextView) rowView.findViewById(R.id.tv_delivered_product);
         TextView tv_delivered_address = (TextView) rowView.findViewById(R.id.tv_delivered_address);
+        TextView tv_delivered_note = (TextView) rowView.findViewById(R.id.tv_delivered_note);
         TextView tv_delivered_contacto = (TextView) rowView.findViewById(R.id.tv_delivered_contacto);
         TextView tv_delivered_facture = (TextView) rowView.findViewById(R.id.tv_delivered_facture);
         TextView tv_delivered_entreprice = (TextView) rowView.findViewById(R.id.tv_delivered_entreprice);
@@ -103,7 +104,7 @@ public class AdapterDelivered extends ArrayAdapter<Package> {
         String sourceString = "Cliente: " + "<b>" + values.get(position).getNombre_de_cliente() + "</b> ";
         tv_delivered_dni.setText( Html.fromHtml(sourceString) );
         tv_delivered_contacto.setText( "Contacto: " + values.get(position).getNombre_de_contacto() + ", " + values.get(position).getNumero_de_contacto());
-        tv_delivered_product.setText("Referencia: "  + values.get(position).getReference());
+        tv_delivered_note.setText("Nota: "  + values.get(position).getNote());
         tv_delivered_address.setText("Direccion entrega: " + values.get(position).getAddress());
         tv_delivered_facture.setText(values.get(position).getDocument_type() + ": " + values.get(position).getDocument_number());
         tv_delivered_entreprice.setText("Empresa: " + values.get(position).getCompany());

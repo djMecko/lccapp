@@ -67,8 +67,8 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
         //edt_password.setText("1948");
 
         // Seller
-        edt_dni.setText("46762585");
-        edt_password.setText("4676");
+        //edt_dni.setText("46762585");
+        //edt_password.setText("4676");
 
 
         ArrayList<Package> packages = (ArrayList<Package>) packageDao.getPackagesDelivered(3);
@@ -214,7 +214,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
     public void validateLogin(){
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = urls.getLogin() + "?dni=" + edt_dni.getText() + "&password="+ edt_password.getText()+"&type="+type;
-        Log.v("DATA",url);
+        Log.e("DATA",url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -246,7 +246,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
                 } catch (JSONException e) {
                     e.printStackTrace();
                     progressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this, "Error de conexion",Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Error de conexion 1",Toast.LENGTH_LONG).show();
                 }
 
 
@@ -256,7 +256,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             public void onErrorResponse(VolleyError error) {
                 Log.v("DATA", "error conexion");
                 progressDialog.dismiss();
-                Toast.makeText(LoginActivity.this, "Error de conexion",Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Error de conexion 2",Toast.LENGTH_LONG).show();
             }
         });
 

@@ -47,7 +47,7 @@ public class AdapterInfo extends ArrayAdapter<Info> {
         //if(values.get(position).getSuccess().toString().equals("true")){
 
             if(values.get(position).getSuccess() == true){
-                tv_package_status.setText("Estado: " +  "Exitoso");
+                tv_package_status.setText("Estado: " +  values.get(position).getStatus());
             }else {
                 tv_package_status.setText("Estado: " +  "Sin exito");
             }

@@ -24,13 +24,19 @@
             android:id="@+id/tv_delivered_contacto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="N Doc: 12454797"/>
+            android:text="Contacto"/>
 
         <TextView
             android:id="@+id/tv_delivered_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Av Cayma 245"/>
+
+        <TextView
+            android:id="@+id/tv_delivered_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nota"/>
 
         <TextView
             android:id="@+id/tv_delivered_product"
@@ -42,13 +48,13 @@
             android:id="@+id/tv_delivered_facture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Av Cayma 245"/>
+            android:text="Nro Factura"/>
 
         <TextView
             android:id="@+id/tv_delivered_entreprice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Av Cayma 245"/>
+            android:text="Empresa"/>
 
         <TextView
             android:id="@+id/tv_delivered_estimated"

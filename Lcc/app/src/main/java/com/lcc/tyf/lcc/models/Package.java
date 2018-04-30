@@ -14,6 +14,7 @@ public class Package implements Comparable<Package> {
 
     public static final String IDDB = "IDDB";
     public static final String ADDRESS = "ADDRESS";
+    public static final String NOTE = "NOTE";
     public static final String REFERENCE = "REFERENCE";
     public static final String ID = "ID";
     public static final String NOMBRE = "NOMBRE";
@@ -35,6 +36,8 @@ public class Package implements Comparable<Package> {
     private int iddb;
     @DatabaseField(columnName = ADDRESS)
     private String address;
+    @DatabaseField(columnName = NOTE)
+    private String note;
     @DatabaseField(columnName = REFERENCE)
     private String reference;
     @DatabaseField(columnName = ID)
@@ -80,9 +83,10 @@ public class Package implements Comparable<Package> {
     }
 
 
-    public Package(String address, String reference, int id, String nombre, String nombre_de_contacto, String numero_de_contacto, String nombre_de_cliente, double latitude, double longitude, int delivery_order, String document_type, String document_number, String company){
+    public Package(String address, String reference, String note, int id, String nombre, String nombre_de_contacto, String numero_de_contacto, String nombre_de_cliente, double latitude, double longitude, int delivery_order, String document_type, String document_number, String company){
         this.address = address;
         this.reference = reference;
+        this.note = note;
         this.id = id;
         this.nombre = nombre;
         this.nombre_de_contacto = nombre_de_contacto;
@@ -111,6 +115,10 @@ public class Package implements Comparable<Package> {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getNote(){ return note;}
+
+    public void setNote(String note){this.note=note;}
 
     public String getReference() {
         return reference;
@@ -255,6 +263,4 @@ public class Package implements Comparable<Package> {
             return -1;
         }
     }
-
-
 }
