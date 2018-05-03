@@ -131,8 +131,8 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
             mstring = "0" + dstring;
         }
 
-        String url = urls.getDeliveriesbycodeseller() + "?id=" + hsp.getSellerId() + "&date_search=" + String.valueOf(year) + "-" + String.valueOf(mstring) + "-" +String.valueOf(dstring);
-        Log.v("DATA",url);
+        String url = urls.getDeliveriesbycodesellerLast() + "?id=" + hsp.getSellerId();
+        Log.e("DATA",url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

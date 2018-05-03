@@ -9,9 +9,9 @@ public class Urls {
 
     public Urls(){
         // desarrollo
-        //base_url = "http://192.168.1.3/lcc/public/";
+        base_url = "http://192.168.1.3/lcc/public/";
         // produccion
-        base_url = "http://190.116.179.8:8080/";
+        //base_url = "http://190.116.179.8:8080/";
 
     }
 
@@ -49,6 +49,10 @@ public class Urls {
 
     public String getDeliveriesbycodeseller(){
         return base_url + "getdeliveriesbycodeseller";
+    }
+
+    public String getDeliveriesbycodesellerLast(){
+        return base_url + "getdeliveriesbycodesellerLast";
     }
 
     public String getUpdatePackagesStates(){
