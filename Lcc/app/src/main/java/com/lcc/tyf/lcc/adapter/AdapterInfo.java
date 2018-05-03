@@ -54,6 +54,9 @@ public class AdapterInfo extends ArrayAdapter<Info> {
 
             if(values.get(position).getMotive().toString().equals("null")){
                 tv_package_motive.setText("Motivo: " );
+            }
+            if( values.get(position).getMotive().toString().equals("PENDIENTE POR FALTA DE TIEMPO")){
+                tv_package_status.setText("Estado: EN CAMINO");
             }else{
                 tv_package_motive.setText("Motivo: " + values.get(position).getMotive());
             }
@@ -63,6 +66,8 @@ public class AdapterInfo extends ArrayAdapter<Info> {
             tv_package_document_type.setText("T. Documento: " + values.get(position).getDocument_type());
             tv_package_serie.setText("Serie: "+ values.get(position).getSerie());
             tv_package_document_number.setText("N. Documento: " + values.get(position).getDocument_number());
+
+
         /*
         }else{
 
