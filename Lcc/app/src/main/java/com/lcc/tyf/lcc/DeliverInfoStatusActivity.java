@@ -58,7 +58,7 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        updateResult2(year, month, day);
+        updateResultInitial();
     }
 
     public void toolbar(){
@@ -116,22 +116,11 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
     }
 
 
-    public void updateResult2(int year, int month, int day) {
+    public void updateResultInitial() {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        String mstring = String.valueOf(month+1);
-        String dstring = String.valueOf(day);
-
-        if(mstring.length() == 1){
-            mstring = "0" + mstring;
-        }
-
-        if(dstring.length() == 1){
-            mstring = "0" + dstring;
-        }
-
-        String url = urls.getDeliveriesbycodeseller() + "?id=" + hsp.getSellerId();
+        String url = urls.getDeliveriesbycodesellerLast() + "?id=" + hsp.getSellerId();
         Log.e("DATA",url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -235,10 +224,10 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
         }
 
         if(dstring.length() == 1){
-            mstring = "0" + dstring;
+            dstring = "0" + dstring;
         }
 
-        String url =urls.getDeliveriesbycodesellerLast() + "?id=" + hsp.getSellerId() + "&date_search=" + String.valueOf(year) + "-" + String.valueOf(mstring) + "-" +String.valueOf(dstring);
+        String url =urls.getDeliveriesbycodeseller() + "?id=" + hsp.getSellerId() + "&date_search=" + String.valueOf(year) + "-" + String.valueOf(mstring) + "-" +String.valueOf(dstring);
         Log.e("DATA",url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
