@@ -58,7 +58,7 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        updateResult(year, month, day);
+        updateResult2(year, month, day);
     }
 
     public void toolbar(){
@@ -115,8 +115,8 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
         }
     }
 
-    @Override
-    public void updateResult(int year, int month, int day) {
+
+    public void updateResult2(int year, int month, int day) {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -131,7 +131,7 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
             mstring = "0" + dstring;
         }
 
-        String url = urls.getDeliveriesbycodesellerLast() + "?id=" + hsp.getSellerId();
+        String url = urls.getDeliveriesbycodeseller() + "?id=" + hsp.getSellerId();
         Log.e("DATA",url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -163,6 +163,113 @@ public class DeliverInfoStatusActivity extends ActionBarActivity implements View
                     AdapterInfo adapterInfo = new AdapterInfo(getApplicationContext(), values);
                     lv_finddocuments.setAdapter(adapterInfo);
                     
+                    /*
+                    if(jsonObj.get("success").toString().equals("true")){
+                        tv_package_status.setVisibility(View.VISIBLE);
+                        tv_package_motive.setVisibility(View.VISIBLE);
+                        tv_package_date.setVisibility(View.VISIBLE);
+                        tv_package_client.setVisibility(View.VISIBLE);
+                        tv_package_status.setText("Estado: " + jsonObj.getString("status"));
+                        if(jsonObj.getString("motive").toString().equals("null")){
+                            tv_package_motive.setText("Motivo: " );
+                        }else{
+                            tv_package_motive.setText("Motivo: " + jsonObj.getString("motive"));
+                        }
+                        tv_package_date.setText("Fecha: " + jsonObj.getString("estimated_date"));
+                        tv_package_client.setText("Cliente: " + jsonObj.getString("client"));
+                    }else{
+
+                        tv_package_status.setText("Estado: " );
+                        tv_package_motive.setText("Motivo: " );
+                        tv_package_date.setText("Fecha: " );
+                        tv_package_client.setText("Cliente: " );
+
+                        Toast.makeText(DeliverInfoActivity.this, jsonObj.get("message").toString(),Toast.LENGTH_LONG).show();
+                    }
+                    */
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    progressDialog.dismiss();
+
+                    AdapterInfo adapterInfo = new AdapterInfo(getApplicationContext(), new ArrayList<Info>());
+                    lv_finddocuments.setAdapter(adapterInfo);
+
+                    Toast.makeText(getApplicationContext(), "No hay informacion para mostrar", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(DeliverInfoStatusActivity.this, "Error de conexion",Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+
+                AdapterInfo adapterInfo = new AdapterInfo(getApplicationContext(), new ArrayList<Info>());
+                lv_finddocuments.setAdapter(adapterInfo);
+
+                Toast.makeText(getApplicationContext(), "No hay informacion para mostrar", Toast.LENGTH_LONG).show();
+                //Toast.makeText(DeliverInfoStatusActivity.this, "Error de conexion",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        queue.add(stringRequest);
+
+    }
+
+    @Override
+    public void updateResult(int year, int month, int day) {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        String mstring = String.valueOf(month+1);
+        String dstring = String.valueOf(day);
+
+        if(mstring.length() == 1){
+            mstring = "0" + mstring;
+        }
+
+        if(dstring.length() == 1){
+            mstring = "0" + dstring;
+        }
+
+        String url =urls.getDeliveriesbycodesellerLast() + "?id=" + hsp.getSellerId() + "&date_search=" + String.valueOf(year) + "-" + String.valueOf(mstring) + "-" +String.valueOf(dstring);
+        Log.e("DATA",url);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObj = new JSONObject(response);
+                    JSONArray jsonArray = jsonObj.getJSONArray("deliveries");
+                    ArrayList<Info> values = new ArrayList<>();
+                    if(jsonArray.length() == 0){
+                        Toast.makeText(getApplicationContext(), "No hay informacion para mostrar", Toast.LENGTH_LONG).show();
+                    }
+                    for (int i=0;i < jsonArray.length(); i++){
+
+                        Log.v("DATA", jsonArray.getJSONObject(i).toString());
+                        values.add(new Info(
+                                jsonArray.getJSONObject(i).getBoolean("success"),
+                                jsonArray.getJSONObject(i).getString("status"),
+                                jsonArray.getJSONObject(i).getString("motive"),
+                                jsonArray.getJSONObject(i).getString("client"),
+                                jsonArray.getJSONObject(i).getString("estimated_date"),
+                                jsonArray.getJSONObject(i).getString("company"),
+                                jsonArray.getJSONObject(i).getString("document_type"),
+                                jsonArray.getJSONObject(i).getString("serie"),
+                                jsonArray.getJSONObject(i).getString("document_number")
+                        ));
+                    }
+
+                    AdapterInfo adapterInfo = new AdapterInfo(getApplicationContext(), values);
+                    lv_finddocuments.setAdapter(adapterInfo);
+
                     /*
                     if(jsonObj.get("success").toString().equals("true")){
                         tv_package_status.setVisibility(View.VISIBLE);
