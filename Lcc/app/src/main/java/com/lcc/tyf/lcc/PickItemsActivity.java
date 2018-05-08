@@ -86,8 +86,8 @@ public class PickItemsActivity extends ActionBarActivity implements View.OnClick
 
                         packages.add(new Package(
                                 jsonArray.getJSONObject(i).getString("address"),
-                                jsonArray.getJSONObject(i).getString("note"),
                                 jsonArray.getJSONObject(i).getString("reference"),
+                                jsonArray.getJSONObject(i).getString("note"),
                                 jsonArray.getJSONObject(i).getInt("id"),
                                 jsonArray.getJSONObject(i).getString("nombre"),
                                 jsonArray.getJSONObject(i).getString("nombre_de_contacto"),
