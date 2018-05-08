@@ -87,7 +87,6 @@ public class AdapterDelivered extends ArrayAdapter<Package> {
         View rowView = inflater.inflate(R.layout.list_delivered, parent, false);
 
         TextView tv_delivered_dni = (TextView) rowView.findViewById(R.id.tv_delivered_dni);
-        TextView tv_delivered_product = (TextView) rowView.findViewById(R.id.tv_delivered_product);
         TextView tv_delivered_address = (TextView) rowView.findViewById(R.id.tv_delivered_address);
         TextView tv_delivered_note = (TextView) rowView.findViewById(R.id.tv_delivered_note);
         TextView tv_delivered_contacto = (TextView) rowView.findViewById(R.id.tv_delivered_contacto);

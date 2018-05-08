@@ -62,7 +62,7 @@ public class AdapterPicked extends ArrayAdapter<Package> {
         View rowView = inflater.inflate(R.layout.list_picked, parent, false);
 
         TextView tv_dni = (TextView) rowView.findViewById(R.id.tv_dni);
-        TextView tv_product = (TextView) rowView.findViewById(R.id.tv_product);
+        TextView tv_note = (TextView) rowView.findViewById(R.id.tv_note);
         TextView tv_adress = (TextView) rowView.findViewById(R.id.tv_adress);
         TextView tv_facture = (TextView) rowView.findViewById(R.id.tv_facture);
         TextView tv_entreprice = (TextView) rowView.findViewById(R.id.tv_entreprice);
@@ -75,10 +75,10 @@ public class AdapterPicked extends ArrayAdapter<Package> {
         String sourceString = "Cliente: " + "<b>" + values.get(position).getNombre_de_cliente() + "</b>";
         tv_dni.setText( Html.fromHtml(sourceString) );
         tv_contacto.setText("Contacto: " + values.get(position).getNombre_de_contacto()  + ", "+ values.get(position).getNumero_de_contacto());
+        tv_note.setText("Nota: "  + values.get(position).getNote());
         tv_adress.setText("Direccion entrega: " + values.get(position).getAddress());
         tv_facture.setText(values.get(position).getDocument_type() + ": " + values.get(position).getDocument_number());
         tv_entreprice.setText("Empresa: " + values.get(position).getCompany());
-        tv_product.setText("Nota: "  + values.get(position).getNote());
 
         if(pickedStatus.get(position) == -1){
 

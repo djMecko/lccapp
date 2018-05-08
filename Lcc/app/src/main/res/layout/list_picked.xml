@@ -26,6 +26,12 @@
             android:text="N Doc: 12454797"/>
 
         <TextView
+            android:id="@+id/tv_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nota: "/>
+
+        <TextView
             android:id="@+id/tv_adress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,11 +50,7 @@
             android:layout_height="wrap_content"
             android:text="Av Cayma 245"/>
 
-        <TextView
-            android:id="@+id/tv_product"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" "/>
+
 
     </LinearLayout>
 
