@@ -75,10 +75,10 @@ public class AdapterPicked extends ArrayAdapter<Package> {
         String sourceString = "Cliente: " + "<b>" + values.get(position).getNombre_de_cliente() + "</b>";
         tv_dni.setText( Html.fromHtml(sourceString) );
         tv_contacto.setText("Contacto: " + values.get(position).getNombre_de_contacto()  + ", "+ values.get(position).getNumero_de_contacto());
-        tv_product.setText("Nota: "  + values.get(position).getNote());
         tv_adress.setText("Direccion entrega: " + values.get(position).getAddress());
         tv_facture.setText(values.get(position).getDocument_type() + ": " + values.get(position).getDocument_number());
         tv_entreprice.setText("Empresa: " + values.get(position).getCompany());
+        tv_product.setText("Nota: "  + values.get(position).getNote());
 
         if(pickedStatus.get(position) == -1){
 

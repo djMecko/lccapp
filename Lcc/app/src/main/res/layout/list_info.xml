@@ -21,7 +21,7 @@
         android:layout_marginLeft="30dp"
         android:textSize="15sp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:text="Motivo: Nadie en casa"/>
+        android:text="Motivo:"/>
 
     <TextView
         android:id="@+id/tv_package_client"

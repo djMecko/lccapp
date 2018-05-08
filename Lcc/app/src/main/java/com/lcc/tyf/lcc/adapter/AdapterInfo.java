@@ -52,11 +52,13 @@ public class AdapterInfo extends ArrayAdapter<Info> {
                 tv_package_status.setText("Estado: " +  "Sin exito");
             }
 
-            if(values.get(position).getMotive().toString().equals("null")){
+            if(values.get(position).getMotive().equals("NULL")){
                 tv_package_motive.setText("Motivo: " );
             }
             if( values.get(position).getMotive().toString().equals("PENDIENTE POR FALTA DE TIEMPO")){
                 tv_package_status.setText("Estado: EN CAMINO");
+                tv_package_motive.setText("Motivo: "+ values.get(position).getMotive() );
+
             }else{
                 tv_package_motive.setText("Motivo: " + values.get(position).getMotive());
             }

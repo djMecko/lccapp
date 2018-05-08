@@ -39,12 +39,6 @@
             android:text="Nota"/>
 
         <TextView
-            android:id="@+id/tv_delivered_product"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1 Tonelada de ladrillos"/>
-
-        <TextView
             android:id="@+id/tv_delivered_facture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
